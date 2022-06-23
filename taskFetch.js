@@ -1,13 +1,9 @@
-fetch('https://jsonplaceholder.typicode.com/users', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-        name: 'User 1'
+const fetch = require('node-fetch')
+
+fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .then(data => {
+        data.forEach(e => console.log(e.name))
+    }).catch(e => {
+        console.log('error')
     })
-}).then(res => {
-    return res.json()
-})
-    .then(data => console.log(data))
-    .catch(data => console.log('ERROR'))
